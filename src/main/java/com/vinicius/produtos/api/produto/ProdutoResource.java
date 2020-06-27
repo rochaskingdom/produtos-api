@@ -13,10 +13,10 @@ import java.util.List;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
-@Path("/api/produtos")
+@Path("/products")
 @Produces(APPLICATION_JSON)
 @Consumes(APPLICATION_JSON)
-@Tag(name = "Produtos")
+@Tag(name = "Products")
 public class ProdutoResource {
 
     @Inject
