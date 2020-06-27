@@ -41,9 +41,22 @@ public class ProdutoResource {
 
     @POST
     public Response adicionarProduto(@Valid Produto produto, @Context UriInfo uriInfo) {
-        produto = service.adicionar(produto);
+        produto = service.adicionarProduto(produto);
         UriBuilder builder = uriInfo.getAbsolutePathBuilder().path(Long.toString(produto.id));
         return Response.created(builder.build()).build();
+    }
+
+    @PUT
+    public Response atualizarProduto(@Valid Produto produto) {
+        produto = service.atualizaProduto(produto);
+        return Response.ok(produto).build();
+    }
+
+    @DELETE
+    @Path("/{id}")
+    public Response deletaProduto(@PathParam("id") Long id) {
+        service.deletaProduto(id);
+        return Response.noContent().build();
     }
 }
 

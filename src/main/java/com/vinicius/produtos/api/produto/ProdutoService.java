@@ -19,8 +19,20 @@ public class ProdutoService {
         return Produto.findById(id);
     }
 
-    public Produto adicionar(@Valid Produto produto) {
+    public Produto adicionarProduto(@Valid Produto produto) {
         Produto.persist(produto);
         return produto;
+    }
+
+    public Produto atualizaProduto(Produto produto) {
+        Produto produtoAtualiza = Produto.findById(produto.id);
+        produtoAtualiza.setName(produto.getName());
+        produtoAtualiza.setPrice(produto.getPrice());
+        return produtoAtualiza;
+    }
+
+    public void deletaProduto(Long id) {
+        Produto produto = Produto.findById(id);
+        produto.delete();
     }
 }
